@@ -1,1 +1,2 @@
-# Surveys-Builder_React_Laravel_mySQL
+# Surveys Builder
+Stack: React / Laravel / MySQL
