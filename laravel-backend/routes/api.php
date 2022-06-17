@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 
 // Authenticate User
 Route::controller(AuthController::class)->group(function () {
@@ -16,15 +17,21 @@ Route::controller(AuthController::class)->group(function () {
 
 
 Route::controller(WelcomeController::class)->group(function(){
-    Route::get('/', 'welcome');
+    Route::get('surveys/{id?}', 'getSurveys');
 });
 
+// User Route
+Route::middleware("role.user")->group(function(){
+    Route::controller(UserController::class)->group(function () {
+        Route::post('answer/', 'addAnswer');
+    }); 
+});
 
 // Admin Routes
 Route::middleware("role.admin")->group(function(){
     Route::controller(AdminController::class)->group(function () {
         Route::get('users/{id?}', 'getUsers');
         Route::post('survey', 'store');
-        Route::delete('item/{id}', 'destroy');
+        Route::delete('survey/{id}', 'destroy');
     }); 
 });
