@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
-<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"></link>
+import Home from "./components/Home";
 
 function App() {
   const [surveys, setSurveys] = useState("");
@@ -29,8 +29,8 @@ function App() {
   return (
     <>
       <Navbar />
+      <Home />
       {/* {surveys ? JSON.stringify(surveys) : "Loading ..."} */}
-
     </>
   );
 }

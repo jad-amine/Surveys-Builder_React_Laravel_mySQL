@@ -1,8 +1,10 @@
+import { FaUser } from "react-icons/fa";
+import Vector from "../assets/Vector.png";
 
 const Navbar = (props) => {
   return ( 
     <div className="container">
-      <p>SURVEYS BUILDER</p>
+      <div><img src={Vector} alt="" /> <span id="logo">SURVEYS BUILDER</span></div>
       <ul>
         <li>Surveys</li>
         <li>Contact Us</li>
@@ -10,7 +12,7 @@ const Navbar = (props) => {
         <li>FAQs</li>
       </ul>
       <ul>
-        <li id="signin" onClick={() => console.log('signin')}><i class="fa-solid fa-user"></i>Login</li>
+        <li onClick={() => console.log('signin')}><FaUser/><span  id="signin">Login</span></li>
         <li id="signup" onClick={() => console.log('signup')}>Signup</li>
       </ul>
     </div>
