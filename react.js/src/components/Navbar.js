@@ -4,7 +4,8 @@ import Vector from "../assets/Vector.png";
 const Navbar = (props) => {
   return ( 
     <div className="container">
-      <div><img src={Vector} alt="" /> <span id="logo">SURVEYS BUILDER</span></div>
+      <div>
+        <img src={Vector} alt="" /> <span id="logo">SURVEYS BUILDER</span></div>
       <ul>
         <li>Surveys</li>
         <li>Contact Us</li>

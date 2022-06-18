@@ -26,7 +26,7 @@ Route::prefix('v1')->group(function () {
     // User Route
     Route::middleware("role.user")->group(function(){
         Route::controller(UserController::class)->group(function () {
-            Route::post('answer/', 'addAnswer');
+            Route::post('answer/', 'addAnswer');           
         }); 
     });
 

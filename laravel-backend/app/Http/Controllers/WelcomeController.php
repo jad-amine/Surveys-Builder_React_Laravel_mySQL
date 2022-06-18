@@ -8,17 +8,19 @@ use App\Models\User;
 
 class WelcomeController extends Controller{
     
-    // Retrieve surveys
-    public function getSurveys($id = null){
-        if($id){
-            $surveys = Question::find($id);
-        } else {
-            $surveys = Question::all();
-        }
-
+    // Fetch surveys
+    public function getSurveys($name = null){
+        if($name){
+            $surveys = Question::where('survey_name', "$name")->get();
+        } else{
+            // $surveys = DB::table('questions')->select('survey_name')->distinct();
+            $surveys = Question::select('survey_name')->distinct()->get();
+        };
+        
         return response()->json([
             "status" => "success",
             "surveys" => $surveys
         ]);
     }
+
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
+import Footer from "./components/Footer";
 
 function App() {
   const [surveys, setSurveys] = useState("");
@@ -31,6 +32,7 @@ function App() {
       <Navbar />
       <Home />
       {/* {surveys ? JSON.stringify(surveys) : "Loading ..."} */}
+      <Footer />
     </>
   );
 }
