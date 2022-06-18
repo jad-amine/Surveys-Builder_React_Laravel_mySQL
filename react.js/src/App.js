@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import Navbar from "./components/Navbar";
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"></link>
 
 function App() {
   const [surveys, setSurveys] = useState("");
@@ -24,7 +26,13 @@ function App() {
     };
     fetchData();
   }, []);
-  return <>{surveys ? JSON.stringify(surveys) : "Loading ..."}</>;
+  return (
+    <>
+      <Navbar />
+      {/* {surveys ? JSON.stringify(surveys) : "Loading ..."} */}
+
+    </>
+  );
 }
 
 export default App;
