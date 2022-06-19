@@ -10,14 +10,40 @@ const AddSurvey = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name, questionContent, questionType, questionPossibleAnswers);
+    let data = new FormData();
+    data.append("survey_name", name);
+    data.append("content", questionContent);
+    data.append("possible_answers", questionPossibleAnswers);
+    data.append("type", questionType);
+    addQuestion(data);
+    // console.log(name, questionContent, questionType, questionPossibleAnswers);
     setQuestionContent("");
     setAdded(true);
     setTimeout(() => {
-      setAdded(false)
+      setAdded(false);
     }, 3000);
     setQuestionType("");
     setQuestionPossibleAnswers("");
+  };
+
+  // Adding question
+  const addQuestion = async (data) => {
+    try{
+
+      const res = await fetch("http://localhost:8000/api/v1/survey", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          // "Authorization" : `Bearer: ${token}`
+        },
+        body: JSON.stringify(data),
+      });
+      const res1 = await res.json();
+      console.log(res1);
+      // setTasks([...tasks, data]);
+    } catch (err) {
+      console.log(err)
+    }
   };
 
   return (
@@ -32,7 +58,7 @@ const AddSurvey = () => {
           required
           onChange={(e) => setName(e.target.value)}
           value={name}
-        /> 
+        />
         <hr />
         <h1>Question</h1>
         Question Name
