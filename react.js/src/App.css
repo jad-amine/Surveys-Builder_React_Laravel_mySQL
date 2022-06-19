@@ -165,7 +165,42 @@
   color: #6f96a9;
 }
 
+.login-page{
+  height: 76vh;
+}
 
+.login-page > form{
+  padding: 70px;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.login-page label{
+  font-size: 25px;
+  color: #52869C;
+}
+
+.login-page input{
+  height: 30px;
+  width: 300px;
+  border-radius: 10px;
+  border: 2px solid #6a96ab;
+  color: #52869C;
+  padding-left: 10px;
+  font-weight: bold;
+  margin: 20px;
+}
+
+.login-page > form input:last-child{
+  cursor: pointer;
+  background-color: #6a96ab;
+  color: white;
+  font-size: 20px;
+  height: 50px;
+  width: 200px;
+  margin: 30px auto;
+}
 /* Footer */
 .footer {
   height: 50px;

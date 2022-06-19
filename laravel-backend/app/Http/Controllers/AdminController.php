@@ -27,6 +27,7 @@ class AdminController extends Controller{
     // Fix this issue with json and surveys filling 
     public function store(Request $request){
         $question = new Question;
+        $request = json_decode($request);
         $question->type = $request->type;
         $question->content = $request->content;
         $question->possible_answers = $request->possible_answers;

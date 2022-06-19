@@ -13,7 +13,7 @@ const AddSurvey = () => {
     let data = new FormData();
     data.append("survey_name", name);
     data.append("content", questionContent);
-    data.append("possible_answers", questionPossibleAnswers);
+    data.append("possible_answers", JSON.stringify(questionPossibleAnswers));
     data.append("type", questionType);
     addQuestion(data);
     // console.log(name, questionContent, questionType, questionPossibleAnswers);
@@ -26,15 +26,16 @@ const AddSurvey = () => {
     setQuestionPossibleAnswers("");
   };
 
+  var token = localStorage.getItem('token');
+
   // Adding question
   const addQuestion = async (data) => {
-    try{
-
+    try {
       const res = await fetch("http://localhost:8000/api/v1/survey", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
-          // "Authorization" : `Bearer: ${token}`
+          'Authorization': `bearer ${localStorage.getItem('token')}`
         },
         body: JSON.stringify(data),
       });
@@ -42,7 +43,7 @@ const AddSurvey = () => {
       console.log(res1);
       // setTasks([...tasks, data]);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   };
 

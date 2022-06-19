@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import Surveys from "./components/Surveys";
 import Footer from "./components/Footer";
 import AddSurvey from "./components/AddSurvey";
+import Login from "./components/Login";
 import "./App.css";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/surveys" element={<Surveys />} />
           <Route path="/addSurvey" element={<AddSurvey />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
         <Footer />
       </BrowserRouter>

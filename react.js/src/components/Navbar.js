@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 // Pages
 import Vector from "../assets/Vector.png";
 
-const Navbar = (props) => {
+const Navbar = ({user}) => {
   // Used to direct user to pages
   const navigate = useNavigate();
-
+  
   return (
     <div className="container">
       <div>
@@ -21,9 +21,9 @@ const Navbar = (props) => {
         <li onClick={() => navigate('/addSurvey')}>Add Survey</li>
       </ul>
       <ul>
-        <li onClick={() => console.log("signin")}>
+        <li onClick={() => navigate('/login')}>
           <FaUser />
-          <span id="signin">Login</span>
+          <span id="signin" >Login</span>
         </li>
         <li onClick={() => console.log("signup")}>
           <button id="signup" >Signup</button> 
