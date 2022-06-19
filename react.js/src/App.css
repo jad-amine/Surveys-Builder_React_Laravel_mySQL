@@ -1,10 +1,16 @@
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+}
+
 /* Navbar */
 .container{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 95%;
-  margin: 0 auto;
+  margin: 0 30px;
   height: 100px;
   color: #52869C;
   font-size: 20px;
@@ -12,6 +18,7 @@
 
 .container > ul {
   display: flex;
+  align-items: center;
   list-style: none;
 }
 
@@ -29,12 +36,16 @@
 }
 
 #signup {
-  padding: 5px 10px;
+  padding: 13px 18px;
   background-color: white;
   border-radius: 8px;
+  color: #52869C;
+  border: 0;
+  font-size: 18px;
 }
 
 #logo{
+  cursor: pointer;
   font-weight: bold;
   font-size: 35px;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -80,6 +91,44 @@
   color: white;
   font-size: 25px;
   cursor: pointer;
+}
+
+/* Surveys Page */
+.surveys {
+  margin: 40px auto;
+  width: 80%;
+}
+
+.surveys span {
+  color: rgba(242, 53, 53, 1);
+}
+.surveys > h2 {
+  text-align: center;
+  color: #3a5460;
+}
+
+.surveys > div {
+  display: flex;
+  gap: 100px;
+  margin: 100px 0 50px 0;
+}
+
+.survey{
+  color: white;
+  padding: 50px;
+  background-color:#52869C;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.survey:hover{
+  background-color:#00b7ff;
 }
 
 /* Footer */

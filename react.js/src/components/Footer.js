@@ -1,7 +1,7 @@
 const Footer = () => {
   return ( 
     <div className="footer">
-      <p>hello</p>
+      <p>@2022</p>
     </div>
   );
 }

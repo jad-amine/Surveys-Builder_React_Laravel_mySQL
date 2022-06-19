@@ -1,15 +1,21 @@
 import { FaUser } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
+// Pages
 import Vector from "../assets/Vector.png";
 
 const Navbar = (props) => {
+  // Used to direct user to pages
+  const navigate = useNavigate();
+
   return (
     <div className="container">
       <div>
         <img src={Vector} alt="" />
-        <span id="logo">SURVEYS BUILDER</span>
+        <span id="logo" onClick={() => navigate('/')}>SURVEYS BUILDER</span>
       </div>
       <ul>
-        <li>Surveys</li>
+        <li onClick={() => navigate('/surveys')}>Surveys</li>
         <li>Contact Us</li>
         <li>About Us</li>
         <li>FAQs</li>
@@ -19,8 +25,8 @@ const Navbar = (props) => {
           <FaUser />
           <span id="signin">Login</span>
         </li>
-        <li id="signup" onClick={() => console.log("signup")}>
-          Signup
+        <li onClick={() => console.log("signup")}>
+          <button id="signup" >Signup</button> 
         </li>
       </ul>
     </div>
