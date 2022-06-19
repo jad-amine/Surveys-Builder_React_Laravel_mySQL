@@ -25,7 +25,7 @@ const Navbar = ({user}) => {
           <FaUser />
           <span id="signin" >Login</span>
         </li>
-        <li onClick={() => console.log("signup")}>
+        <li onClick={() => navigate('/signup')}>
           <button id="signup" >Signup</button> 
         </li>
       </ul>

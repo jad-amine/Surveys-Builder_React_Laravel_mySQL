@@ -201,6 +201,29 @@
   width: 200px;
   margin: 30px auto;
 }
+
+/* Sign Up */
+.signup{
+  height: 70vh;
+  margin: 50px 80px;
+}
+
+.signup > form{
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+}
+
+.signup > form > input{
+  height: 30px;
+  margin: 20px 20px;
+  padding-left: 10px;
+}
+
+.signup > form > label{
+  font-size: 25px;
+}
+
 /* Footer */
 .footer {
   height: 50px;
