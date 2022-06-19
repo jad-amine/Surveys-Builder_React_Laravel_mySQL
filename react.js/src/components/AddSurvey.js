@@ -53,10 +53,11 @@ const AddSurvey = () => {
             setLength(e.target.value);
           }}
         />
-      </form>
       <div className="question">
         {length > 0 ? <Question nbr={length}/> : <h1>Nbr of question ?</h1>}
       </div>
+      <input type="submit" value={"Add Survey"} />
+      </form>
     </div>
   );
 };
