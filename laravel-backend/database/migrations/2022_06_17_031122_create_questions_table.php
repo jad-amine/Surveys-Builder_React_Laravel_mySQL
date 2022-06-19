@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string("survey_name");
             $table->string("type");
             $table->string("content");
-            $table->string("possible_answers");
+            $table->string("possible_answers")->nullable();
             $table->timestamps();
         });
     }
