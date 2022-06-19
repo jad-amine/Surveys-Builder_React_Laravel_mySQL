@@ -18,7 +18,7 @@ const Navbar = (props) => {
         <li onClick={() => navigate('/surveys')}>Surveys</li>
         <li>Contact Us</li>
         <li>About Us</li>
-        <li>FAQs</li>
+        <li onClick={() => navigate('/addSurvey')}>Add Survey</li>
       </ul>
       <ul>
         <li onClick={() => console.log("signin")}>

@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Surveys from "./components/Surveys";
 import Footer from "./components/Footer";
+import AddSurvey from "./components/AddSurvey";
 import "./App.css";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/surveys" element={<Surveys />} />
+          <Route path="/addSurvey" element={<AddSurvey />} />
         </Routes>
         <Footer />
       </BrowserRouter>
