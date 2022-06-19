@@ -1,76 +1,74 @@
 import { useState } from "react";
-import Question from "./Question";
+// import Question from "./Question";
 
 const AddSurvey = () => {
+  const [added, setAdded] = useState("");
   const [name, setName] = useState("");
-  const [topic, setTopic] = useState("");
-  const [author, setAuthor] = useState("");
-  const [length, setLength] = useState("");
+  const [questionContent, setQuestionContent] = useState("");
+  const [questionType, setQuestionType] = useState("text");
+  const [questionPossibleAnswers, setQuestionPossibleAnswers] = useState("");
 
-  let counter = 1;
-  let array = [];
-  array.length = length;
-  array.fill(1);
-
-  const onSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name, topic, author);
-    setName("");
-    setTopic("");
-    setAuthor("");
+    console.log(name, questionContent, questionType, questionPossibleAnswers);
+    setQuestionContent("");
+    setAdded(true);
+    setTimeout(() => {
+      setAdded(false)
+    }, 3000);
+    setQuestionType("");
+    setQuestionPossibleAnswers("");
   };
 
   return (
     <div className="survey-page">
       <h1>Add Survey</h1>
-      <form className="survey-form" onSubmit={onSubmit}>
+      <form className="survey-form" onSubmit={handleSubmit}>
         {/* <label>Survey Name:</label> */}
+        <h1>Survey Name</h1>
         <input
           type="text"
           placeholder={"Name"}
           required
           onChange={(e) => setName(e.target.value)}
           value={name}
-        />
-        {/* <label>Topic:</label> */}
+        /> 
+        <hr />
+        <h1>Question</h1>
+        Question Name
         <input
-          type="text"
+          type={"text"}
           required
-          placeholder={"Topic"}
-          onChange={(e) => setTopic(e.target.value)}
-          value={topic}
-        />
-        {/* <label>Author:</label> */}
-        <input
-          type="text"
-          required
-          placeholder={"Author"}
-          onChange={(e) => setAuthor(e.target.value)}
-          value={author}
-        />
-        <input
-          type="number"
-          placeholder="Number of Questions"
-          min={1}
-          required
-          value={length}
+          value={questionContent}
+          placeholder={"Question Content"}
           onChange={(e) => {
-            setLength(e.target.value);
+            setQuestionContent(e.target.value);
           }}
         />
-        <div className="question">
-          {length > 0 ? (
-            array.map(() => (
-              <>
-                <h2>Question {counter++}</h2>
-                <Question />
-              </>
-            ))
-          ) : (
-            <h1>Nbr of question ?</h1>
-          )}
-        </div>
-        <input type="submit" value={"Add Survey"} />
+        Question Type
+        {/* Question Type */}
+        <select
+          onChange={(e) => setQuestionType(e.target.value)}
+          value={questionType}
+          required
+        >
+          <option value="text">Text</option>
+          <option value="checkbox">Checkbox</option>
+          <option value="number">Number</option>
+          <option value="select">Drop-down</option>
+        </select>
+        Possible Answers
+        {/* Question Content */}
+        <input
+          type={"text"}
+          value={questionPossibleAnswers}
+          placeholder={"Question Answers"}
+          onChange={(e) => {
+            setQuestionPossibleAnswers(e.target.value);
+          }}
+        />
+        <input type="submit" value={"Add Question"} />
+        {added && <p>Question added</p>}
       </form>
     </div>
   );
