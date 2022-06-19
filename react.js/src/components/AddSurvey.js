@@ -7,6 +7,11 @@ const AddSurvey = () => {
   const [author, setAuthor] = useState("");
   const [length, setLength] = useState("");
 
+  let counter = 1;
+  let array = [];
+  array.length = length;
+  array.fill(1);
+
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(name, topic, author);
@@ -14,7 +19,7 @@ const AddSurvey = () => {
     setTopic("");
     setAuthor("");
   };
-  
+
   return (
     <div className="survey-page">
       <h1>Add Survey</h1>
@@ -53,10 +58,19 @@ const AddSurvey = () => {
             setLength(e.target.value);
           }}
         />
-      <div className="question">
-        {length > 0 ? <Question nbr={length}/> : <h1>Nbr of question ?</h1>}
-      </div>
-      <input type="submit" value={"Add Survey"} />
+        <div className="question">
+          {length > 0 ? (
+            array.map(() => (
+              <>
+                <h2>Question {counter++}</h2>
+                <Question />
+              </>
+            ))
+          ) : (
+            <h1>Nbr of question ?</h1>
+          )}
+        </div>
+        <input type="submit" value={"Add Survey"} />
       </form>
     </div>
   );
