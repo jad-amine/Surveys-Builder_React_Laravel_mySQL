@@ -18,7 +18,7 @@ const AddSurvey = () => {
     data.append("possible_answers", questionPossibleAnswers);
     data.append("type", questionType);
     addQuestion(data);
-    
+
     // console.log(name, questionContent, questionType, questionPossibleAnswers);
     setQuestionContent("");
     setAdded(true);
@@ -35,7 +35,7 @@ const AddSurvey = () => {
       const res = await fetch("http://localhost:8000/api/v1/survey", {
         method: "POST",
         headers: {
-          'Authorization': `bearer ${localStorage.getItem('token')}`
+          Authorization: `bearer ${localStorage.getItem("token")}`,
         },
         body: data,
       });
@@ -48,13 +48,17 @@ const AddSurvey = () => {
   };
 
   const getSurvey = async (survey_name) => {
-    try{
-      const res = await fetch("http://localhost:8000/api/v1/surveys/" + survey_name);
+    try {
+      const res = await fetch(
+        "http://localhost:8000/api/v1/surveys/" + survey_name
+      );
       const data = await res.json();
       console.log(data.surveys);
       setSurveyQuestions(data.surveys);
-    } catch(err) {console.log('error fetching survey')}
-  }
+    } catch (err) {
+      console.log("error fetching survey");
+    }
+  };
 
   return (
     <div className="survey-page">
@@ -67,9 +71,9 @@ const AddSurvey = () => {
           placeholder={"Name"}
           required
           onChange={(e) => {
-            setName(e.target.value)
-            getSurvey(e.target.value)
-            }}
+            setName(e.target.value);
+            getSurvey(e.target.value);
+          }}
           value={name}
         />
         <hr />
@@ -110,15 +114,16 @@ const AddSurvey = () => {
         <input id="add_question" type="submit" value={"Add Question"} />
         {added && <p id="message">Question added</p>}
       </form>
-      {surveyQuestions ? surveyQuestions.map((question)=>(
-        <div key={counter}>
-        <h2>Question {counter++}</h2>
-        <p>Content: {question.content}</p>
-        <p>Type: {question.type}</p>
-        <p>Possible answers: {question.possible_answers}</p>
-        </div>
-        
-        )): console.log('hi')}
+      {surveyQuestions
+        ? surveyQuestions.map((question) => (
+            <div className="added-questions" key={counter}>
+              <h2>Question {counter++}</h2>
+              <p>Content: {question.content}</p>
+              <p>Type: {question.type}</p>
+              <p>Possible answers: {question.possible_answers}</p>
+            </div>
+          ))
+        : console.log("hi")}
     </div>
   );
 };

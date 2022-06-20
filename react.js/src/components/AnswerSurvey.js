@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Question from "./Question";
 
 const AnswerSurvey = () => {
   const [surveys, setSurveys] = useState([]);
   const [response, setResponse] = useState([]);
   let url = useParams();
+  const navigate = useNavigate();
   url = url["*"];
   let counter = 1;
 
@@ -42,7 +43,12 @@ const AnswerSurvey = () => {
         body: packet,
       });
       const res1 = await res.json();
-      console.log(res1);
+      // console.log(res1);
+      if (res1.message == "Unauthenticated user") {
+        navigate("/login");
+      } else {
+        navigate("/surveys");
+      }
       return res1;
     } catch (err) {
       console.log(err);
@@ -51,8 +57,6 @@ const AnswerSurvey = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(response);
-    console.log("hi");
     sendData(JSON.stringify(response));
   };
 

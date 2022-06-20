@@ -60,10 +60,10 @@ const Answers = () => {
       </div>
         {answers
           ? answers.map((answer) => (
-              <div key={answer.id}>
+              <div id="specific_answer" key={answer.id}>
                 <h3>{answer.content}</h3>
                 {answer.answers.map((e)=>(
-                  <h2>{e.answer}</h2>
+                  <p>{e.answer}</p>
                 ))}
               </div>
             ))

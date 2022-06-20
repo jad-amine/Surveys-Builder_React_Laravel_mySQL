@@ -33,7 +33,7 @@ const Surveys = () => {
       <h2>
         Give your opinion regarding the planet's <span>FLAMING</span> topics !
       </h2>
-      <div>
+      <div id="surveys-collection">
         {surveys
           ? surveys.map((survey) => (
               <div 

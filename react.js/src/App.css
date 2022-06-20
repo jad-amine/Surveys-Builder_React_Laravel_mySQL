@@ -171,6 +171,12 @@
   font-size: 25px;
 }
 
+#specific_answer{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 /* Add Survey */
 .survey-page {
   margin: 40px auto;
@@ -196,7 +202,6 @@
 }
 .survey-form > select {
   width: 100px;
-
 }
 
 .survey-form > input{
@@ -209,6 +214,10 @@
   font-size: 20px;
 }
 
+.added-questions{
+  margin: 30px 50px;
+}
+
 .survey-form > input:focus{
   border: none;
   color: #6f96a9;
@@ -217,6 +226,11 @@
 #add_question{
   background-color: #00b7ff;
   color: white;
+}
+
+#surveys-collection{
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #message{
@@ -311,4 +325,13 @@
 .footer {
   height: 50px;
   background-color: #52869C;
+}
+
+/* Media Query */
+@media only screen and (max-width: 900px){
+  .home-page {
+    flex-direction: column;
+    margin-top: 50px;
+    min-width: 500px;
+  }
 }
