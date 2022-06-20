@@ -7,6 +7,7 @@ const AnswerSurvey = () => {
   const [response, setResponse] = useState([]);
   let url = useParams();
   url = url["*"];
+  let counter = 1;
 
   // Function to fetch server data
   const fetchServerData = async (url) => {
@@ -28,6 +29,33 @@ const AnswerSurvey = () => {
     fetchData();
   }, []);
 
+  // Function to send response
+  const sendData = async (data) => {
+    let packet = new FormData();
+    packet.append('response', data);
+    try {
+      const res = await fetch("http://localhost:8000/api/v1/answer", {
+        method: "POST",
+        headers: {
+          'Authorization': `bearer ${localStorage.getItem("token")}`,
+        },
+        body: packet,
+      });
+      const res1 = await res.json();
+      console.log(res1);
+      return res1;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(response);
+    console.log('hi')
+    sendData(response);
+  };
+
   return (
     <div className="user-answer">
       <h1>{url}</h1>
@@ -37,11 +65,19 @@ const AnswerSurvey = () => {
           <h4>{question.type}</h4>
         </div>
       ))} */}
-      <form>
+      <form onSubmit={handleSubmit}>
         {surveys.map((question) => (
-          <Question question={question} response={response} setResponse={setResponse} />
+          <>
+            <Question
+              question={question}
+              response={response}
+              setResponse={setResponse}
+              counter={counter++}
+            />
+          </>
         ))}
-        {/* {JSON.stringify(surveys)} */}
+        {JSON.stringify(surveys)}
+        <input type="submit" />
       </form>
     </div>
   );
