@@ -12,6 +12,11 @@ class AdminController extends Controller{
     public function getUsers($id = null){
         if($id){
             $users = User::find($id);
+
+            return response()->json([
+                "status" => "success",
+                "users" => $users->answers
+            ], 200);
         } else {
             $users = User::all();
         }

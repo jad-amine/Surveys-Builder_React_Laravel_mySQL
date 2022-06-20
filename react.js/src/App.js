@@ -11,6 +11,7 @@ import AddSurvey from "./components/AddSurvey";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import AnswerSurvey from "./components/AnswerSurvey";
+import Answers from "./components/Answers";
 import "./App.css";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/surveys/*" element={<Surveys />} />
           <Route path="/addSurvey" element={<AddSurvey />} />
           <Route path="/AnswerSurvey/*" element={<AnswerSurvey />} />
+          <Route path="/answers/*" element={<Answers />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
