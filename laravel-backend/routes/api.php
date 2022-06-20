@@ -33,7 +33,7 @@ Route::prefix('v1')->group(function () {
     // Admin Routes
     Route::middleware("role.admin")->group(function(){
         Route::controller(AdminController::class)->group(function () {
-            Route::get('users/{id?}', 'getUsers');
+            Route::get('surveyAnswers/{survey_name}', 'answers');
             Route::post('survey', 'store');
             Route::delete('survey/{id}', 'destroy');
         }); 

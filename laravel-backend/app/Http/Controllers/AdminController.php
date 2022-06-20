@@ -3,28 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Answer;
 use App\Models\Question;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller{
     
     // Retrieve all users
-    public function getUsers($id = null){
-        if($id){
-            $users = User::find($id);
-
-            return response()->json([
-                "status" => "success",
-                "users" => $users->answers
-            ], 200);
-        } else {
-            $users = User::all();
+    public function answers($survey_name){
+        $questions = Question::where('survey_name', "$survey_name")->get();
+        $collection = [];
+        foreach($questions as $question){
+            $collection[] = $question->answers;
         }
-        
         return response()->json([
             "status" => "success",
-            "users" => $users
-        ], 200);
+            "questions" => $questions,
+            // "answers" => $collection
+        ]);
     }
 
     // Add a survey
