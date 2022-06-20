@@ -119,8 +119,8 @@
   background-color:#52869C;
   border-radius: 20px;
   cursor: pointer;
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,9 +131,43 @@
   background-color:#00b7ff;
 }
 
+/* Answer Survey */
+.user-answer{
+  margin: 50px 50px;
+}
+
+.user-answer form{
+  margin: 50px 50px;
+}
+
+.user-answer h2{
+  margin: 30px 00px;
+}
+
+.user-answer h3{
+  margin: 20px 30px;
+}
+
+.user-answer input{
+  height: 30px;
+  width: 600px;
+}
+
+#answer_survey{
+  background-color: #00b7ff;
+  border: 0;
+  border-radius: 20px;
+  margin: 30px auto;
+  width: 150px;
+  height: 40px;
+  color: white;
+  font-size: 25px;
+}
+
 /* Add Survey */
 .survey-page {
-  margin: 40px 30px;
+  margin: 40px auto;
+  min-width: 1000px;
 }
 
 .survey-page > h1 {
@@ -150,20 +184,40 @@
   gap: 20px;
 }
 
+.survey-form > h1 {
+  color: #6a96ab;
+}
+.survey-form > select {
+  width: 100px;
+
+}
+
 .survey-form > input{
-  height: 50px;
+  height: 40px;
   width: 300px;
   /* margin: 0px 150px; */
   border-radius: 10px;
   border: 1px solid #6f96a9;
-  /* text-align: center; */
-  font-size: 26px;
+  padding-left: 20px;
+  font-size: 20px;
 }
 
 .survey-form > input:focus{
   border: none;
   color: #6f96a9;
 }
+
+#add_question{
+  background-color: #00b7ff;
+  color: white;
+}
+
+#message{
+  color: #00b7ff;
+  font-size: 20px;
+}
+
+/* Login Page */
 
 .login-page{
   height: 76vh;
@@ -182,7 +236,8 @@
 }
 
 .login-page input{
-  height: 30px;
+  height: 40px;
+  font-size: 20px;
   width: 300px;
   border-radius: 10px;
   border: 2px solid #6a96ab;
@@ -214,10 +269,31 @@
   width: 250px;
 }
 
+.signup label{
+  font-size: 25px;
+  color: #52869C;
+}
+
 .signup > form > input{
-  height: 30px;
-  margin: 20px 20px;
+  height: 40px;
+  font-size: 20px;
+  width: 300px;
+  border-radius: 10px;
+  border: 2px solid #6a96ab;
+  color: #52869C;
   padding-left: 10px;
+  font-weight: bold;
+  margin: 20px;
+}
+
+.signup > form input:last-child{
+  cursor: pointer;
+  background-color: #6a96ab;
+  color: white;
+  font-size: 20px;
+  height: 50px;
+  width: 200px;
+  margin: 30px auto;
 }
 
 .signup > form > label{

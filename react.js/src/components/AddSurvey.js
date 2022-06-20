@@ -73,7 +73,7 @@ const AddSurvey = () => {
           value={name}
         />
         <hr />
-        <h1>Question</h1>
+        <h2>Question</h2>
         Question Name
         <input
           type={"text"}
@@ -107,8 +107,8 @@ const AddSurvey = () => {
             setQuestionPossibleAnswers(e.target.value);
           }}
         />
-        <input type="submit" value={"Add Question"} />
-        {added && <p>Question added</p>}
+        <input id="add_question" type="submit" value={"Add Question"} />
+        {added && <p id="message">Question added</p>}
       </form>
       {surveyQuestions ? surveyQuestions.map((question)=>(
         <div key={counter}>

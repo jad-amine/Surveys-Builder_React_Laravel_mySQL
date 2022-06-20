@@ -1,8 +1,8 @@
 const Question = ({ question, response, setResponse, counter }) => {
   return (
     <>
-      <h1>Question {counter+1}</h1>
-      <h2>{question.content}</h2>
+      <h2>Question {counter}</h2>
+      <h3>{question.content}</h3>
       {question.type == "text" ? (
         <input
           key={question.id}

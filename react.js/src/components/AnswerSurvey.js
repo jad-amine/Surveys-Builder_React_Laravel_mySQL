@@ -32,12 +32,12 @@ const AnswerSurvey = () => {
   // Function to send response
   const sendData = async (data) => {
     let packet = new FormData();
-    packet.append('response', data);
+    packet.append("response", data);
     try {
       const res = await fetch("http://localhost:8000/api/v1/answer", {
         method: "POST",
         headers: {
-          'Authorization': `bearer ${localStorage.getItem("token")}`,
+          Authorization: `bearer ${localStorage.getItem("token")}`,
         },
         body: packet,
       });
@@ -52,13 +52,14 @@ const AnswerSurvey = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(response);
-    console.log('hi')
-    sendData(response);
+    console.log("hi");
+    sendData(JSON.stringify(response));
   };
 
   return (
     <div className="user-answer">
       <h1>{url}</h1>
+      <hr />
       {/* {surveys.map((question) => (
         <div key={question.id}>
           <h2>{question.content}</h2>
@@ -66,18 +67,20 @@ const AnswerSurvey = () => {
         </div>
       ))} */}
       <form onSubmit={handleSubmit}>
-        {surveys.map((question) => (
-          <>
-            <Question
-              question={question}
-              response={response}
-              setResponse={setResponse}
-              counter={counter++}
-            />
-          </>
-        ))}
-        {JSON.stringify(surveys)}
-        <input type="submit" />
+        <ul>
+          {surveys.map((question) => (
+            <li>
+              <Question
+                question={question}
+                response={response}
+                setResponse={setResponse}
+                counter={counter++}
+              />
+            </li>
+          ))}
+        </ul>
+        {/* {JSON.stringify(surveys)} */}
+        <input id="answer_survey" type="submit" />
       </form>
     </div>
   );

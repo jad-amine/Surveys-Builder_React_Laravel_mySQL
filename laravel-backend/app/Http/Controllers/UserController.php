@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Answer;
 use App\Models\Question;
@@ -10,16 +11,22 @@ class UserController extends Controller{
 
     // Save user answer
     public function addAnswer(Request $resquest){
-        $answer = new Answer;
-        // $answer->user_id = $resquest->user_id;
-        // $answer->question_id = $resquest->question_id;
-        // $answer->answer = $resquest->answer;
-        // $answer->survey_name = $resquest->survey_name;
-        // $answer->save();
+        $user = Auth::user();
+        $arrived = json_decode($resquest->response);
+        foreach($arrived as $user_answer){
+            // $user_answer = json_decode($user_answer);
+            $answer = new Answer;
+            $answer->user_id = $user->id;
+            $answer->question_id = $user_answer->question_id;
+            $answer->answer = $user_answer->content;
+            $answer->survey_name = $user_answer->survey_name;
+            $answer->save();
+        }
 
         return response()->json([
             "status" => "success",
-            "content" => $resquest
+            "content" => $arrived,
+            "user_id" => $user->id
         ], 200);
     }
 
