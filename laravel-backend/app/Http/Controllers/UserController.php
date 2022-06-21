@@ -30,4 +30,11 @@ class UserController extends Controller{
         ], 200);
     }
 
+    public function authUser(){
+        $user = Auth::user();
+        return response()->json([
+            "status" => "succes",
+            "user" => $user
+        ], 200);
+    }
 }

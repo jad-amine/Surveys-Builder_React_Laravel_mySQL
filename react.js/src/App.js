@@ -1,18 +1,14 @@
 // Utilities
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./Pages/Home";
+import Login from "./Pages/Login";
+import SignUp from "./Pages/SignUp";
 
 // Pages
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import Surveys from "./components/Surveys";
-import Footer from "./components/Footer";
-import AddSurvey from "./components/AddSurvey";
-import Login from "./components/Login";
-import SignUp from "./components/SignUp";
-import AnswerSurvey from "./components/AnswerSurvey";
-import Answers from "./components/Answers";
 import "./App.css";
+import AddSurvey from "./Pages/AddSurvey";
 
 function App() {
   const [surveys, setSurveys] = useState("");
@@ -22,10 +18,11 @@ function App() {
   useEffect(() => {
     const getSurveys = async () => {
       const res = await fetchSurveys();
-      setSurveys(res);
+      setSurveys(res.surveys);
       console.log(surveys);
     };
     getSurveys();
+    authUser();
   }, []);
 
   // Api call to get all the surveys
@@ -41,27 +38,29 @@ function App() {
 
   // Api call to get all the surveys
   const authUser = async () => {
-    const res = await fetch("http://localhost:8000/api/v1/user");
-    const data = await res.json();
-    return data;
+    try {
+      const res = await fetch("http://localhost:8000/api/v1/user");
+      const data = await res.json();
+      console.log(data);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
-    <h2>Hello world</h2>
+    // <h2>Hello world</h2>
     // <>
-    //   <BrowserRouter>
-    //     <Navbar />
-    //     <Routes>
-    //       <Route path="/" element={<Home />} />
-    //       <Route path="/surveys/*" element={<Surveys />} />
-    //       <Route path="/addSurvey" element={<AddSurvey />} />
-    //       <Route path="/AnswerSurvey/*" element={<AnswerSurvey />} />
-    //       <Route path="/answers/*" element={<Answers />} />
-    //       <Route path="/login" element={<Login />} />
-    //       <Route path="/signup" element={<SignUp />} />
-    //     </Routes>
-    //     {/* <Footer /> */}
-    //   </BrowserRouter>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/addSurvey" element={<AddSurvey />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+      </Routes>
+      {/* <Footer /> */}
+    </BrowserRouter>
     // </>
   );
 }
