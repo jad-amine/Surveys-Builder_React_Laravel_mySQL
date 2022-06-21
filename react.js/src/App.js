@@ -15,23 +15,54 @@ import Answers from "./components/Answers";
 import "./App.css";
 
 function App() {
+  const [surveys, setSurveys] = useState("");
+  const [token, setToken] = useState("");
+
+  // Onload Get surveys and authenticate user
+  useEffect(() => {
+    const getSurveys = async () => {
+      const res = await fetchSurveys();
+      setSurveys(res);
+      console.log(surveys);
+    };
+    getSurveys();
+  }, []);
+
+  // Api call to get all the surveys
+  const fetchSurveys = async () => {
+    try {
+      const res = await fetch("http://localhost:8000/api/v1/surveys");
+      const data = await res.json();
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // Api call to get all the surveys
+  const authUser = async () => {
+    const res = await fetch("http://localhost:8000/api/v1/user");
+    const data = await res.json();
+    return data;
+  };
 
   return (
-    <>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/surveys/*" element={<Surveys />} />
-          <Route path="/addSurvey" element={<AddSurvey />} />
-          <Route path="/AnswerSurvey/*" element={<AnswerSurvey />} />
-          <Route path="/answers/*" element={<Answers />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-        </Routes>
-        {/* <Footer /> */}
-      </BrowserRouter>
-    </>
+    <h2>Hello world</h2>
+    // <>
+    //   <BrowserRouter>
+    //     <Navbar />
+    //     <Routes>
+    //       <Route path="/" element={<Home />} />
+    //       <Route path="/surveys/*" element={<Surveys />} />
+    //       <Route path="/addSurvey" element={<AddSurvey />} />
+    //       <Route path="/AnswerSurvey/*" element={<AnswerSurvey />} />
+    //       <Route path="/answers/*" element={<Answers />} />
+    //       <Route path="/login" element={<Login />} />
+    //       <Route path="/signup" element={<SignUp />} />
+    //     </Routes>
+    //     {/* <Footer /> */}
+    //   </BrowserRouter>
+    // </>
   );
 }
 
