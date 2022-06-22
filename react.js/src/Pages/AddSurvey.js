@@ -39,9 +39,10 @@ const AddSurvey = () => {
 
   // Send data to the backend
   const handelSubmit = async () => {
-    const res = await fetch("http://localhost:8000/api/addSurvey", {
+    const res = await fetch("http://localhost:8000/api/v1/addSurvey", {
       method: "POST",
       headers: {
+        "Content-type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
       body: JSON.stringify({ title: surveyTitle }),
@@ -49,7 +50,7 @@ const AddSurvey = () => {
     const data = await res.json();
     const ID = data.id;
     inputFields.forEach(async (inputField) => {
-      const res2 = await fetch("http://localhost:8000/api/addQuestion", {
+      const res2 = await fetch("http://localhost:8000/api/v1/addQuestion", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -64,7 +65,7 @@ const AddSurvey = () => {
       const data2 = await res2.json();
       const question_id = data2.id;
       inputField.choices.forEach(async (choice) => {
-        const res3 = await fetch("http://localhost:8000/api/addQuestion", {
+        const res3 = await fetch("http://localhost:8000/api/v1/addchoice", {
           method: "POST",
           headers: {
             "Content-type": "application/json",

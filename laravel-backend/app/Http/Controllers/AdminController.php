@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Answer;
 use App\Models\Question;
+use App\Models\Survey;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller{
@@ -26,11 +27,10 @@ class AdminController extends Controller{
     // Add a survey
 
     // Fix this issue with json and surveys filling 
-    public function store(Request $request){
+    public function storeQuestion(Request $request){
         $question = new Question;
         $question->type = $request->type;
-        $question->content = $request->content;
-        $question->possible_answers = $request->possible_answers;
+        $question->label = $request->label;
         $question->survey_name = $request->survey_name;
         $question->save();
         return response()->json([

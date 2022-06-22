@@ -14,10 +14,9 @@ return new class extends Migration
     public function up(){
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->string("survey_name");
+            $table->string("surveyTitle");
             $table->string("type");
-            $table->string("content");
-            $table->string("possible_answers")->nullable();
+            $table->string("label");
             $table->timestamps();
         });
     }

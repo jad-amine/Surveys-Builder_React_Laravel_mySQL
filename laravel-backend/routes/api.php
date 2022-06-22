@@ -35,7 +35,9 @@ Route::prefix('v1')->group(function () {
     Route::middleware("role.admin")->group(function(){
         Route::controller(AdminController::class)->group(function () {
             Route::get('surveyAnswers/{survey_name}', 'answers');
-            Route::post('survey', 'store');
+            Route::post('addQuestion', 'storeQuestion');
+            Route::post('addSurvey', 'storeSurvey');
+            Route::post('addChoice', 'storeChoice');
             Route::delete('survey/{id}', 'destroy');
         }); 
     });
