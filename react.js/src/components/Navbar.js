@@ -15,7 +15,7 @@ const Navbar = ({user}) => {
         <span id="logo" onClick={() => navigate('/')}>SURVEYS BUILDER</span>
       </div>
       <ul>
-        <li onClick={() => navigate('/surveys')}>Surveys</li>
+        <li onClick={() => navigate('/viewSurveys')}>Surveys</li>
         <li>Contact Us</li>
         <li onClick={() => navigate('/answers')}>Answers</li>
         <li onClick={() => navigate('/addSurvey')}>Add Survey</li>

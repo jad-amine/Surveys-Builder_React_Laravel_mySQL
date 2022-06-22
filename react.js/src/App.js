@@ -9,6 +9,7 @@ import SignUp from "./Pages/SignUp";
 // Pages
 import "./App.css";
 import AddSurvey from "./Pages/AddSurvey";
+import ViewSurveys from "./Pages/ViewSurveys";
 
 function App() {
   const [surveys, setSurveys] = useState("");
@@ -56,6 +57,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/addSurvey" element={<AddSurvey />} />
+        <Route path="/viewSurveys" element={<ViewSurveys />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>

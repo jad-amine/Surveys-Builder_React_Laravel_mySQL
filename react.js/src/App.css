@@ -121,7 +121,7 @@
 }
 
 .add-survey div{
-  padding: 30px 30px;
+  padding: 20px 20px;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -134,6 +134,8 @@
   background-color: #52869C;
   border-radius: 5px;
   border: 0px;
+  color: white;
+  font-weight: bold;
 }
 
 #green{

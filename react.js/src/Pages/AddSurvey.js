@@ -49,7 +49,7 @@ const AddSurvey = () => {
       body: JSON.stringify({ surveyTitle: surveyTitle }),
     });
     const data = await res.json();
-    console.log(data.survey.id);
+    console.log(data);
     const ID = data.survey.id;
     inputFields.forEach(async (inputField) => {
       const res2 = await fetch("http://localhost:8000/api/v1/addQuestion", {
@@ -65,9 +65,10 @@ const AddSurvey = () => {
         }),
       });
       const data2 = await res2.json();
+      console.log(data2)
       const question_id = data2.question.id;
       inputField.choices.forEach(async (choice) => {
-        const res3 = await fetch("http://localhost:8000/api/v1/addchoice", {
+        const res3 = await fetch("http://localhost:8000/api/v1/addChoice", {
           method: "POST",
           headers: {
             "Content-type": "application/json",
@@ -75,10 +76,11 @@ const AddSurvey = () => {
           },
           body: JSON.stringify({
             question_id: question_id,
-            text: choice,
+            choice: choice,
           }),
         });
         const data3 = await res3.json();
+        console.log(data3);
       });
     });
   };
@@ -98,7 +100,7 @@ const AddSurvey = () => {
           <div key={index}>
             {/* Question Label */}
             <label>
-              Question label:
+              {'Question label:  '}
               <input
                 type="text"
                 name="label"
@@ -108,7 +110,7 @@ const AddSurvey = () => {
             </label>
             {/* Question Type */}
             <label>
-              Question type:
+              {'Question type:  '}
               <select
                 value={input.type}
                 name="type"
@@ -119,6 +121,7 @@ const AddSurvey = () => {
                 ))}
               </select>
             </label>
+            <hr />
             {/* Question Choices */}
             {(input.type === "dropDown" || input.type === "radio") && (
               <div>
@@ -139,12 +142,13 @@ const AddSurvey = () => {
                 {input.choices.map((choice) => {
                   return <div>{choice}</div>;
                 })}
+                <hr />
               </div>
             )}
           </div>
         ))}
         <button className="add-more-questions" type="button" onClick={addFields}>
-          Add more
+          Add Question
         </button>
         <button id="green" type="submit"> Add Survey</button>
       </fieldset>
