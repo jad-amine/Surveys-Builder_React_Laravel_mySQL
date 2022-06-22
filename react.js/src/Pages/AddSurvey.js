@@ -42,7 +42,7 @@ const AddSurvey = () => {
     const res = await fetch("http://localhost:8000/api/addSurvey", {
       method: "POST",
       headers: {
-        Authorization: Bearer + localStorage.getItem("token"),
+        Authorization: "Bearer " + localStorage.getItem("token"),
       },
       body: JSON.stringify({ title: surveyTitle }),
     });
@@ -53,7 +53,7 @@ const AddSurvey = () => {
         method: "POST",
         headers: {
           "Content-type": "application/json",
-          Authorization: Bearer + localStorage.getItem("token"),
+          Authorization: "Bearer " + localStorage.getItem("token"),
         },
         body: JSON.stringify({
           label: inputField.label,
@@ -68,7 +68,7 @@ const AddSurvey = () => {
           method: "POST",
           headers: {
             "Content-type": "application/json",
-            Authorization: Bearer + localStorage.getItem("token"),
+            Authorization: "Bearer " + localStorage.getItem("token"),
           },
           body: JSON.stringify({
             question_id: question_id,
@@ -83,66 +83,68 @@ const AddSurvey = () => {
   const types = ["checkBox", "dropDown", "textBox", "radio"];
 
   return (
-    <form onSubmit={handelSubmit}>
-      <h2>Survey Title</h2>
-      <input
-        type="text"
-        value={surveyTitle}
-        onChange={(e) => setSurveyTitle(e.target.value)}
-      />
-      {inputFields.map((input, index) => (
-        <div>
-          {/* Question Label */}
-          <label>
-            Question label
-            <input
-              type="text"
-              name="label"
-              value={input.label}
-              onChange={(e) => handleFormChange(index, e)}
-            />
-          </label>
-          {/* Question Type */}
-          <label>
-            Question type
-            <select
-              value={input.type}
-              name="type"
-              onChange={(e) => handleFormChange(index, e)}
-            >
-              {types.map((type) => (
-                <option value={type}>{type}</option>
-              ))}
-            </select>
-          </label>
-          {/* Question Choices */}
-          {(input.type === "dropDown" || input.type === "radio") && (
-            <div>
-              <p>Choices:</p>
+    <form onSubmit={handelSubmit} className={"add-survey"}>
+      <fieldset>
+        <h2>Survey Title</h2>
+        <input
+          type="text"
+          value={surveyTitle}
+          onChange={(e) => setSurveyTitle(e.target.value)}
+        />
+        {inputFields.map((input, index) => (
+          <div>
+            {/* Question Label */}
+            <label>
+              Question label:
               <input
-                type={"text"}
-                name={"currentChoice"}
+                type="text"
+                name="label"
+                value={input.label}
                 onChange={(e) => handleFormChange(index, e)}
               />
-              <button
-                type="button"
-                onClick={(e) => {
-                  handelChoiceAdd(index, input.currentChoice);
-                }}
+            </label>
+            {/* Question Type */}
+            <label>
+              Question type:
+              <select
+                value={input.type}
+                name="type"
+                onChange={(e) => handleFormChange(index, e)}
               >
-                Add Choice
-              </button>
-              {input.choices.map((choice) => {
-                return <div>{choice}</div>;
-              })}
-            </div>
-          )}
-        </div>
-      ))}
-      <button type="button" onClick={addFields}>
-        Add more
-      </button>
-      <button type="submit"> Add Survey</button>
+                {types.map((type) => (
+                  <option value={type}>{type}</option>
+                ))}
+              </select>
+            </label>
+            {/* Question Choices */}
+            {(input.type === "dropDown" || input.type === "radio") && (
+              <div>
+                <p>Choices:</p>
+                <input
+                  type={"text"}
+                  name={"currentChoice"}
+                  onChange={(e) => handleFormChange(index, e)}
+                />
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    handelChoiceAdd(index, input.currentChoice);
+                  }}
+                >
+                  Add Choice
+                </button>
+                {input.choices.map((choice) => {
+                  return <div>{choice}</div>;
+                })}
+              </div>
+            )}
+          </div>
+        ))}
+        <button className="add-more-questions" type="button" onClick={addFields}>
+          Add more
+        </button>
+        <button id="green" type="submit"> Add Survey</button>
+      </fieldset>
     </form>
   );
 };

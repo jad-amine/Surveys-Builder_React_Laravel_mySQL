@@ -102,11 +102,46 @@
 
 /* Add Survey */
 .add-survey{
+  margin: 50px auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 300px;
-  margin:70px 0 0px 100px;
+  width: 400px;
+}
+
+.add-survey fieldset{
+  padding: 30px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.add-survey label{
+  font-size: 20px;
+}
+
+.add-survey div{
+  padding: 30px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.add-survey button{
+  width: 100px;
+  height: 30px;
+  margin: 0 auto;
+  background-color: #52869C;
+  border-radius: 5px;
+  border: 0px;
+}
+
+#green{
+  background-color: rgb(24, 182, 24);
+  border: 0;
+  border-radius: 5px;
+  height: 40px;
+  width: 150px;
 }
 
 /* Login Page */
