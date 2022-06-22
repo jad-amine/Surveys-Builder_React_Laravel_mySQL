@@ -9,7 +9,7 @@ const AddSurvey = () => {
       choices: [],
       currentChoice: "",
     },
-  ]);
+  ]); 
 
   //Add a new question field
   const addFields = (e) => {
@@ -38,17 +38,19 @@ const AddSurvey = () => {
   };
 
   // Send data to the backend
-  const handelSubmit = async () => {
+  const handelSubmit = async (e) => {
+    e.preventDefault();
     const res = await fetch("http://localhost:8000/api/v1/addSurvey", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
+        'Authorization': "Bearer " + localStorage.getItem("token"),
       },
-      body: JSON.stringify({ title: surveyTitle }),
+      body: JSON.stringify({ surveyTitle: surveyTitle }),
     });
     const data = await res.json();
-    const ID = data.id;
+    console.log(data.survey.id);
+    const ID = data.survey.id;
     inputFields.forEach(async (inputField) => {
       const res2 = await fetch("http://localhost:8000/api/v1/addQuestion", {
         method: "POST",
@@ -63,13 +65,13 @@ const AddSurvey = () => {
         }),
       });
       const data2 = await res2.json();
-      const question_id = data2.id;
+      const question_id = data2.question.id;
       inputField.choices.forEach(async (choice) => {
         const res3 = await fetch("http://localhost:8000/api/v1/addchoice", {
           method: "POST",
           headers: {
             "Content-type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("token"),
+            'Authorization': "Bearer " + localStorage.getItem("token"),
           },
           body: JSON.stringify({
             question_id: question_id,
@@ -93,7 +95,7 @@ const AddSurvey = () => {
           onChange={(e) => setSurveyTitle(e.target.value)}
         />
         {inputFields.map((input, index) => (
-          <div>
+          <div key={index}>
             {/* Question Label */}
             <label>
               Question label:
@@ -112,8 +114,8 @@ const AddSurvey = () => {
                 name="type"
                 onChange={(e) => handleFormChange(index, e)}
               >
-                {types.map((type) => (
-                  <option value={type}>{type}</option>
+                {types.map((type, index) => (
+                  <option key={index} value={type}>{type}</option>
                 ))}
               </select>
             </label>

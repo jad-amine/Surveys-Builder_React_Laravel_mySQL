@@ -24,18 +24,40 @@ class AdminController extends Controller{
         ]);
     }
 
-    // Add a survey
+    // Store survey
+    public function storeSurvey(Request $request){
+        $survey = new Survey;
+        $survey->surveyTitle = $request->surveyTitle;
+        $survey->save();
+        return response()->json([
+            "status" => "success",
+            "survey" => $survey
+        ], 200);
+    }
 
-    // Fix this issue with json and surveys filling 
+    // Store questions 
     public function storeQuestion(Request $request){
         $question = new Question;
         $question->type = $request->type;
         $question->label = $request->label;
-        $question->survey_name = $request->survey_name;
+        $question->survey_id = $request->survey_id;
         $question->save();
         return response()->json([
             "status" => "success",
-            "message" => "question saved"
+            "question" => $question
+        ], 200);
+    }
+
+    // Store choice 
+    public function storeChoice(Request $request){
+        $choice = new Choice;
+        $choice->type = $request->type;
+        $choice->label = $request->label;
+        $choice->survey_id = $request->survey_id;
+        $choice->save();
+        return response()->json([
+            "status" => "success",
+            "question" => $question
         ], 200);
     }
 }

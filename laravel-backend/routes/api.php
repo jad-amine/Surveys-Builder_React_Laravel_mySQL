@@ -37,7 +37,7 @@ Route::prefix('v1')->group(function () {
             Route::get('surveyAnswers/{survey_name}', 'answers');
             Route::post('addQuestion', 'storeQuestion');
             Route::post('addSurvey', 'storeSurvey');
-            Route::post('addChoice', 'storeChoice');
+            Route::post('addchoice', 'storeChoice');
             Route::delete('survey/{id}', 'destroy');
         }); 
     });

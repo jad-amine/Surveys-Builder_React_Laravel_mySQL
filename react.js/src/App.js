@@ -15,38 +15,38 @@ function App() {
   const [token, setToken] = useState("");
 
   // Onload Get surveys and authenticate user
-  useEffect(() => {
-    const getSurveys = async () => {
-      const res = await fetchSurveys();
-      setSurveys(res.surveys);
-      console.log(surveys);
-    };
-    getSurveys();
-    authUser();
-  }, []);
+  // useEffect(() => {
+  //   const getSurveys = async () => {
+  //     const res = await fetchSurveys();
+  //     setSurveys(res.surveys);
+  //     console.log(surveys);
+  //   };
+    // getSurveys();
+    // authUser();
+  // }, []);
+
+  // // Api call to get all the surveys
+  // const fetchSurveys = async () => {
+  //   try {
+  //     const res = await fetch("http://localhost:8000/api/v1/surveys");
+  //     const data = await res.json();
+  //     return data;
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   // Api call to get all the surveys
-  const fetchSurveys = async () => {
-    try {
-      const res = await fetch("http://localhost:8000/api/v1/surveys");
-      const data = await res.json();
-      return data;
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  // Api call to get all the surveys
-  const authUser = async () => {
-    try {
-      const res = await fetch("http://localhost:8000/api/v1/user");
-      const data = await res.json();
-      console.log(data);
-      return data;
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const authUser = async () => {
+  //   try {
+  //     const res = await fetch("http://localhost:8000/api/v1/user");
+  //     const data = await res.json();
+  //     console.log(data);
+  //     return data;
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   return (
     // <h2>Hello world</h2>
