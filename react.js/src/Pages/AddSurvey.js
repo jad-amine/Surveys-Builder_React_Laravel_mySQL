@@ -5,7 +5,7 @@ const AddSurvey = () => {
   const [inputFields, setInputFields] = useState([
     {
       label: "",
-      type: "textbox",
+      type: "textBox",
       choices: [],
       currentChoice: "",
     },
