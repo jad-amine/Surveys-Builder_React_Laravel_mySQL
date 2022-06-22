@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Answer;
 use App\Models\Question;
+use App\Models\Choice;
 use App\Models\Survey;
 use Illuminate\Http\Request;
 
@@ -51,13 +52,12 @@ class AdminController extends Controller{
     // Store choice 
     public function storeChoice(Request $request){
         $choice = new Choice;
-        $choice->type = $request->type;
-        $choice->label = $request->label;
-        $choice->survey_id = $request->survey_id;
+        $choice->choice = $request->choice;
+        $choice->question_id = $request->question_id;
         $choice->save();
         return response()->json([
             "status" => "success",
-            "question" => $question
+            "choice" => $choice
         ], 200);
     }
 }

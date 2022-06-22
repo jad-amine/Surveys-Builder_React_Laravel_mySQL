@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Survey extends Model
+class Choice extends Model
 {
     use HasFactory;
-
-    // Get relevant questions
-    public function questions(){
-        return $this->hasMany(Question::class);
-    }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Question;
 use Illuminate\Http\Request;
+use App\Models\Survey;
+use App\Models\Question;
+use App\Models\Choice;
 use App\Models\User;
 
 class WelcomeController extends Controller{
@@ -13,14 +15,26 @@ class WelcomeController extends Controller{
         if($name){
             $surveys = Question::where('survey_name', "$name")->get();
         } else{
-            // $surveys = DB::table('questions')->select('survey_name')->distinct();
-            $surveys = Question::select('survey_name')->distinct()->get();
-        };
-        
-        return response()->json([
-            "status" => "success",
-            "surveys" => $surveys
-        ]);
-    }
+            $surveys = Survey::all();
 
+            // Get surveys questions
+            $questions = [];
+            foreach($surveys as $survey){
+                $questions[] = $survey->questions;
+            }
+            
+            // Get questions choices
+            $choices = [];
+            for ($i=0; $i<count($questions); $i++){
+                foreach($questions[$i] as $question){
+                    $choices[] = $question->choices;
+                }
+            }
+
+            return response()->json([
+                "status" => "success",
+                "surveys" => $surveys,
+            ]);
+        }
+    }
 }
