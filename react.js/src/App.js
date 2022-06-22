@@ -10,6 +10,7 @@ import SignUp from "./Pages/SignUp";
 import "./App.css";
 import AddSurvey from "./Pages/AddSurvey";
 import ViewSurveys from "./Pages/ViewSurveys";
+import ViewSurvey from "./Pages/ViewSurvey";
 
 function App() {
   const [surveys, setSurveys] = useState("");
@@ -37,7 +38,7 @@ function App() {
   //   }
   // };
 
-  // Api call to get all the surveys
+  // Api call to get all the users
   // const authUser = async () => {
   //   try {
   //     const res = await fetch("http://localhost:8000/api/v1/user");
@@ -58,6 +59,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/addSurvey" element={<AddSurvey />} />
         <Route path="/viewSurveys" element={<ViewSurveys />} />
+        <Route path="/viewSurvey/:id" element={<ViewSurvey />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>

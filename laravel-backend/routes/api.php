@@ -20,7 +20,7 @@ Route::prefix('v1')->group(function () {
 
     // Loading page
     Route::controller(WelcomeController::class)->group(function(){
-        Route::get('surveys/{name?}', 'getSurveys');
+        Route::get('surveys/{id?}', 'getSurveys');
     });
 
     // User Route

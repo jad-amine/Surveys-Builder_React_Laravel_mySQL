@@ -11,9 +11,18 @@ use App\Models\User;
 class WelcomeController extends Controller{
     
     // Fetch surveys
-    public function getSurveys($name = null){
-        if($name){
-            $surveys = Question::where('survey_name', "$name")->get();
+    public function getSurveys($id = null){
+        if($id){
+            $survey = Survey::find($id);
+            $questions = $survey->questions;
+            $choices = [];
+            foreach($questions as $question){
+                $choices[] = $question->choices;
+            };
+            return response()->json([
+                "status" => "success",
+                "survey" => $survey
+            ], 200);
         } else{
             $surveys = Survey::all();
 
